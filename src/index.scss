@@ -1,0 +1,129 @@
+@import "./root.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: $-height !important;
+  background: rgb(34, 34, 34);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: $-height;
+
+  .main_container {
+    max-width: 1504px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 32px;
+  }
+
+  main {
+    flex: 1;
+    padding-top: 40px;
+
+    .main_container {
+      padding: 0 2%;
+      .content_top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .categories {
+          overflow: hidden;
+          overflow-x: auto;
+          white-space: nowrap;
+          border-radius: 60px 0 0 60px;
+
+          button {
+            display: inline-block;
+            background: rgb(6, 6, 6);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            margin: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+          }
+
+          .active {
+            background: white;
+            color: black;
+          }
+
+          &::-webkit-scrollbar {
+            height: 3px;
+            scrollbar-width: 100%;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            border-radius: 20px;
+            background: rgb(60, 60, 60);
+          }
+        }
+
+        .sort {
+          padding: 2%;
+          select {
+            background: rgb(34, 34, 34);
+            border: none;
+            appearance: none;
+            outline: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      .main_content {
+        display: grid;
+        grid-template-columns: repeat(2, calc(($-percent / 2) - 9px));
+        gap: 100px 18px;
+        padding: calc($-height / 20 + 2vw) 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    main {
+      .main_container {
+        .main_content {
+          gap: 140px 69px;
+          grid-template-columns: repeat(3, calc($-percent / 3 - 46px));
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    main {
+      .main_container {
+        .main_content {
+          grid-template-columns: repeat(4, calc($-percent / 4 - 51.75px));
+        }
+      }
+    }
+  }
+}
