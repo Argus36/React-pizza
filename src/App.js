@@ -1,6 +1,8 @@
 import { Footer } from "./components/Footer";
-import { Product } from "./components/Product";
+import { Products } from "./components/Products";
 import { Header } from "./components/Header";
+import { Filtration } from "./components/Filtration";
+import items from "./pizza.json";
 
 function App() {
   return (
@@ -9,36 +11,11 @@ function App() {
         <Header />
         <main>
           <div className="main_container">
-            <div className="content_top">
-              <div className="categories">
-                <button className="active">Все</button>
-                <button>Мясные</button>
-                <button>Вегетарианская</button>
-                <button>Гриль</button>
-                <button>Острые</button>
-                <button>Закрытые</button>
-              </div>
-              <div className="sort">
-                <select name="sort" id="select_sort">
-                  <option value="">Популярности</option>
-                  <option value="">Цене</option>
-                  <option value="">Алфавиту</option>
-                </select>
-              </div>
-            </div>
+            <Filtration />
             <div className="main_content">
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
+              {items.map((value) => {
+                return <Products {...value} />;
+              })}
             </div>
           </div>
         </main>

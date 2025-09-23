@@ -41,57 +41,6 @@ code {
 
     .main_container {
       padding: 0 2%;
-      .content_top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .categories {
-          overflow: hidden;
-          overflow-x: auto;
-          white-space: nowrap;
-          border-radius: 60px 0 0 60px;
-
-          button {
-            display: inline-block;
-            background: rgb(6, 6, 6);
-            padding: 15px 30px;
-            border-radius: 50px;
-            border: none;
-            margin: 10px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-          }
-
-          .active {
-            background: white;
-            color: black;
-          }
-
-          &::-webkit-scrollbar {
-            height: 3px;
-            scrollbar-width: 100%;
-          }
-
-          &::-webkit-scrollbar-thumb {
-            border-radius: 20px;
-            background: rgb(60, 60, 60);
-          }
-        }
-
-        .sort {
-          padding: 2%;
-          select {
-            background: rgb(34, 34, 34);
-            border: none;
-            appearance: none;
-            outline: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-          }
-        }
-      }
 
       .main_content {
         display: grid;
