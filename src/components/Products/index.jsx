@@ -33,6 +33,7 @@ export function Products({ title, price, imageUrl, sizes, types }) {
             {types.map((value, index) => {
               return (
                 <button
+                  key={index}
                   onClick={() => setActiveType(value)}
                   className={activeType === index ? styles.active : ""}>
                   {typesNumber[value]}
@@ -43,13 +44,12 @@ export function Products({ title, price, imageUrl, sizes, types }) {
           <div className={styles.size}>
             {sizes.map((value, index) => {
               return (
-                <>
-                  <button
-                    onClick={() => setActiveSize(index)}
-                    className={activeSize === index ? styles.active : ""}>
-                    {value} см
-                  </button>
-                </>
+                <button
+                  key={index}
+                  onClick={() => setActiveSize(index)}
+                  className={activeSize === index ? styles.active : ""}>
+                  {value} см
+                </button>
               );
             })}
           </div>

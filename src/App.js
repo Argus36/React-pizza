@@ -14,7 +14,7 @@ function App() {
             <Filtration />
             <div className="main_content">
               {items.map((value) => {
-                return <Products {...value} />;
+                return <Products key={value.id} {...value} />;
               })}
             </div>
           </div>

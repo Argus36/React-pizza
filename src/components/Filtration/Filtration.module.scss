@@ -17,7 +17,7 @@
       border: none;
       margin: 10px;
       font-size: 1.2rem;
-      font-weight: 600;
+      font-weight: 300;
       cursor: pointer;
     }
 
@@ -38,14 +38,60 @@
   }
 
   .sort {
-    padding: 2%;
-    select {
-      background: rgb(34, 34, 34);
-      border: none;
-      appearance: none;
-      outline: none;
-      font-weight: 600;
-      font-size: 1.2rem;
+    position: relative;
+    padding: 4% 8%;
+    text-align: start;
+    min-width: 52%;
+    font-size: 1.15em;
+    border-radius: 60px 0 0 60px;
+    background: rgb(34, 34, 34);
+    z-index: 9999;
+    transform: translateX(-15px);
+
+    &__label {
+      display: flex;
+      align-items: center;
+
+      b {
+        color: orange;
+        cursor: pointer;
+      }
+    }
+
+    &__popup {
+      position: absolute;
+      background: rgb(48, 48, 48);
+      right: 0;
+      margin-top: 1.5%;
+      border-radius: 10px;
+      z-index: 9999;
+      width: 180px;
+
+      button {
+        font-size: 1em;
+        width: 100%;
+        text-align: start;
+        background: rgb(34, 34, 34, 0);
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+
+        &:hover {
+          background: rgb(191, 191, 191, 0.25);
+        }
+
+        &:nth-child(1) {
+          border-radius: 10px 10px 0 0;
+        }
+
+        &:nth-last-child(1) {
+          border-radius: 0 0 10px 10px;
+        }
+      }
+      .active {
+        background: rgb(191, 191, 191, 0.25);
+        font-weight: 600;
+      }
     }
   }
 }

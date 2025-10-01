@@ -12,12 +12,18 @@ export function Filtration() {
     "Закрытые",
   ];
 
+  const [open, setOpen] = useState(false);
+  const [sort, setSort] = useState(0);
+  const listSort = ["Популярности", "Цене", "Алфавиту"];
+  const sortName = listSort[sort];
+
   return (
     <div className={styles.content_top}>
       <div className={styles.categories}>
         {categories.map((value, index) => {
           return (
             <button
+              key={index}
               onClick={() => setActiveIndex(index)}
               className={activeIndex === index ? `${styles.active}` : ""}>
               {value}
@@ -26,11 +32,34 @@ export function Filtration() {
         })}
       </div>
       <div className={styles.sort}>
-        <select name="sort" id="select_sort">
-          <option value="">Популярности</option>
-          <option value="">Цене</option>
-          <option value="">Алфавиту</option>
-        </select>
+        <div className={styles.sort__label}>
+          <p>
+            Сортировка по{" "}
+            <b
+              onClick={() => {
+                setOpen(!open);
+              }}>
+              {sortName}
+            </b>
+          </p>
+        </div>
+        {open && (
+          <div className={styles.sort__popup}>
+            {listSort.map((name, i) => {
+              return (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setOpen(!open);
+                    setSort(i);
+                  }}
+                  className={sort === i ? styles.active : ""}>
+                  {name}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );
