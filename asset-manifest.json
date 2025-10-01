@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/React-pizza/static/css/main.1506740c.css",
-    "main.js": "/React-pizza/static/js/main.42062253.js",
+    "main.css": "/React-pizza/static/css/main.c9f7b690.css",
+    "main.js": "/React-pizza/static/js/main.c7664966.js",
     "static/media/logo.png": "/React-pizza/static/media/logo.9bca6cfb3f531e72ecae.png",
     "static/media/YouTube logo.png": "/React-pizza/static/media/YouTube logo.9d3c085f70626adfb31c.png",
     "static/media/GitHub logo.png": "/React-pizza/static/media/GitHub logo.766df9669ee37b36cd7a.png",
     "static/media/Telegram logo.png": "/React-pizza/static/media/Telegram logo.4744d895b3db3431c678.png",
     "static/media/Gmail logo.png": "/React-pizza/static/media/Gmail logo.ff020561ae396e95263f.png",
     "index.html": "/React-pizza/index.html",
-    "main.1506740c.css.map": "/React-pizza/static/css/main.1506740c.css.map",
-    "main.42062253.js.map": "/React-pizza/static/js/main.42062253.js.map"
+    "main.c9f7b690.css.map": "/React-pizza/static/css/main.c9f7b690.css.map",
+    "main.c7664966.js.map": "/React-pizza/static/js/main.c7664966.js.map"
   },
   "entrypoints": [
-    "static/css/main.1506740c.css",
-    "static/js/main.42062253.js"
+    "static/css/main.c9f7b690.css",
+    "static/js/main.c7664966.js"
   ]
 }
