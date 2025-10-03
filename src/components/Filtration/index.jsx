@@ -20,16 +20,14 @@ export function Filtration() {
   return (
     <div className={styles.content_top}>
       <div className={styles.categories}>
-        {categories.map((value, index) => {
-          return (
-            <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={activeIndex === index ? `${styles.active}` : ""}>
-              {value}
-            </button>
-          );
-        })}
+        {categories.map((value, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            className={activeIndex === index ? `${styles.active}` : ""}>
+            {value}
+          </button>
+        ))}
       </div>
       <div className={styles.sort}>
         <div className={styles.sort__label}>
@@ -45,19 +43,17 @@ export function Filtration() {
         </div>
         {open && (
           <div className={styles.sort__popup}>
-            {listSort.map((name, i) => {
-              return (
-                <button
-                  key={i}
-                  onClick={() => {
-                    setOpen(!open);
-                    setSort(i);
-                  }}
-                  className={sort === i ? styles.active : ""}>
-                  {name}
-                </button>
-              );
-            })}
+            {listSort.map((name, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  setOpen(!open);
+                  setSort(i);
+                }}
+                className={sort === i ? styles.active : ""}>
+                {name}
+              </button>
+            ))}
           </div>
         )}
       </div>

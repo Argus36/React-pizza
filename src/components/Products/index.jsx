@@ -30,28 +30,24 @@ export function Products({ title, price, imageUrl, sizes, types }) {
         <h1 className={styles.name}>{title}</h1>
         <div className={styles.card_select_block}>
           <div className={styles.dough}>
-            {types.map((value, index) => {
-              return (
-                <button
-                  key={index}
-                  onClick={() => setActiveType(value)}
-                  className={activeType === index ? styles.active : ""}>
-                  {typesNumber[value]}
-                </button>
-              );
-            })}
+            {types.map((value, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveType(value)}
+                className={activeType === index ? styles.active : ""}>
+                {typesNumber[value]}
+              </button>
+            ))}
           </div>
           <div className={styles.size}>
-            {sizes.map((value, index) => {
-              return (
-                <button
-                  key={index}
-                  onClick={() => setActiveSize(index)}
-                  className={activeSize === index ? styles.active : ""}>
-                  {value} см
-                </button>
-              );
-            })}
+            {sizes.map((value, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveSize(index)}
+                className={activeSize === index ? styles.active : ""}>
+                {value} см
+              </button>
+            ))}
           </div>
         </div>
         <div className={styles.bottom_card}>
