@@ -1,9 +1,23 @@
-$-height: 100vh;
-$-width: 100vw;
-$-percent: 100%;
+:root {
+  --height: 100vh;
+  --width: 100vw;
+  --percent: 100%;
 
-@media (min-width: 768px) {
-}
+  --grid: repeat(2, calc((var(--percent) / 2) - 9px));
 
-@media (min-width: 1024px) {
+  --font-size-h1: calc(var(--height) / 40 + var(--width) / 71.1111);
+  --font-size-h2: calc(var(--height) / 50 + var(--width) / 88.8888);
+  --font-size-p-b: calc(var(--height) / 95 + var(--width) / 168.8888);
+  --font-size-p: calc(var(--height) / 100 + var(--width) / 177.7777);
+
+  @media (min-width: 768px) {
+    --grid: repeat(3, calc(var(--percent) / 3 - 46px));
+  }
+
+  @media (min-width: 1024px) {
+    --grid: repeat(4, calc(var(--percent) / 4 - 51.75px));
+
+    --font-size-h1: calc(var(--height) / 50 + var(--width) / 88.8888);
+    --font-size-h2: calc(var(--height) / 70 + var(--width) / 124.4444);
+  }
 }

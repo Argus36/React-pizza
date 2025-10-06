@@ -30,7 +30,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: calc($-height / 45 + $-width / 300);
+    font-size: var(--font-size-h2);
     font-weight: 800;
     flex: 1;
   }
@@ -85,7 +85,7 @@
       align-items: center;
       min-width: 110px;
       max-height: 50px;
-      width: calc($-height / 10 + $-width / 22.5);
+      width: calc(var(--height) / 10 + var(--width) / 22.5);
       border: 1px solid orange;
       border-radius: 30px;
       color: orange;

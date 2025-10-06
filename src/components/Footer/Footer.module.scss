@@ -19,11 +19,11 @@ footer {
     }
 
     .five {
-      height: calc((100vh / 45) + ($-width / 90));
+      height: calc((100vh / 45) + (var(--width) / 90));
     }
 
     .six {
-      height: calc((100vh / 35) + ($-width / 70));
+      height: calc((100vh / 35) + (var(--width) / 70));
     }
   }
 }

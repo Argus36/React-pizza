@@ -31,14 +31,11 @@ export function Filtration() {
       </div>
       <div className={styles.sort}>
         <div className={styles.sort__label}>
-          <p>
-            Сортировка по{" "}
-            <b
-              onClick={() => {
-                setOpen(!open);
-              }}>
-              {sortName}
-            </b>
+          <p
+            onClick={() => {
+              setOpen(!open);
+            }}>
+            Сортировка по <b>{sortName}</b>
           </p>
         </div>
         {open && (

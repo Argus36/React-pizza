@@ -2,6 +2,7 @@ import { Footer } from "./components/Footer";
 import { Products } from "./components/Products";
 import { Header } from "./components/Header";
 import { Filtration } from "./components/Filtration";
+import Skeleton from "./components/Skeleton";
 import { useState, useEffect } from "react";
 
 function App() {
