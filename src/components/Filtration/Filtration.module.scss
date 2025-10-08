@@ -13,11 +13,11 @@
     button {
       display: inline-block;
       background: rgb(6, 6, 6);
-      padding: calc(var(--font-size-p) - 0.5%) var(--font-size-h2);
+      padding: calc(var(--size-4) - 0.5%) var(--size-2);
       border-radius: 50px;
       border: none;
       margin: 10px;
-      font-size: var(--font-size-p-b);
+      font-size: var(--size-3);
       cursor: pointer;
     }
 
@@ -41,7 +41,7 @@
     position: relative;
     padding: 2.5%;
     text-align: start;
-    font-size: var(--font-size-p-b);
+    font-size: var(--size-3);
     border-radius: 60px 0 0 60px;
     background: rgb(34, 34, 34);
     z-index: 9999;
@@ -65,7 +65,7 @@
       width: 180px;
 
       button {
-        font-size: var(--font-size-p);
+        font-size: var(--size-4);
         width: 100%;
         text-align: start;
         background: rgb(34, 34, 34, 0);

@@ -16,6 +16,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 3.5%;
 
     .logo {
       display: flex;
@@ -23,16 +24,20 @@ header {
       cursor: pointer;
       border-radius: 50px;
 
+      img {
+        width: calc(var(--height) / 20 + var(--width) / 35.5555);
+      }
+
       h1 {
         padding-left: 16px;
-        font-size: var(--font-size-h1);
+        font-size: var(--size-1);
       }
     }
 
     .cart {
       display: flex;
       background: rgb(255, 129, 45);
-      padding: calc(var(--font-size-p));
+      padding: calc(var(--size-4));
       border-radius: 50px;
       border: none;
       cursor: pointer;
@@ -40,7 +45,7 @@ header {
       div {
         width: calc(var(--height) / 20 + var(--width) / 35.5555);
         padding: 0.75% 2%;
-        font-size: var(--font-size-p-b);
+        font-size: var(--size-3);
         font-weight: 600;
       }
     }
@@ -48,11 +53,13 @@ header {
 }
 
 @media (min-width: 1024px) {
-  .header_container {
-    max-width: 1504px;
-    width: 100%;
-    margin: 0 auto;
-    height: 100%;
-    padding: 0 32px;
+  header {
+    .header_container {
+      max-width: 1504px;
+      width: 100%;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 32px;
+    }
   }
 }

@@ -30,7 +30,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: var(--font-size-h2);
+    font-size: var(--size-2);
     font-weight: 800;
     flex: 1;
   }
@@ -48,7 +48,7 @@
       flex: 1;
       border: none;
       border-radius: 5px;
-      font-size: 0.9em;
+      font-size: var(--size-4);
       font-weight: 600;
       cursor: pointer;
       padding: 2%;
@@ -74,8 +74,8 @@
 
     h2 {
       font-weight: bold;
-      font-size: 1.3em;
-      line-height: 27px;
+      font-size: calc(var(--size-2) - 10%);
+      line-height: calc(var(--height) / 35);
       letter-spacing: 0.015em;
     }
 
@@ -85,7 +85,7 @@
       align-items: center;
       min-width: 110px;
       max-height: 50px;
-      width: calc(var(--height) / 10 + var(--width) / 22.5);
+      width: calc(var(--height) / 20 + var(--width) / 35.5555);
       border: 1px solid orange;
       border-radius: 30px;
       color: orange;
