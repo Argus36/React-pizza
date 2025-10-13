@@ -57,8 +57,8 @@ export function Products({ title, price, imageUrl, sizes, types }) {
             {price} ₽
           </h2>
           {num === 0 ? (
-            <button onClick={Plus}>
-              <p style={{ cursor: "pointer" }}>Добавить</p>
+            <button style={{ cursor: "pointer" }} onClick={Plus}>
+              <p>Добавить</p>
             </button>
           ) : (
             <button>

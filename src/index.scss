@@ -37,7 +37,7 @@ code {
 
   main {
     flex: 1;
-    padding-top: 40px;
+    padding-top: var(--size-2);
 
     .main_container {
       padding: 0 2%;

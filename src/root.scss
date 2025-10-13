@@ -3,7 +3,7 @@
   --width: 100vw;
   --percent: 100%;
 
-  --grid: repeat(2, calc((var(--percent) / 2) - 9px));
+  --grid: repeat(2, calc(var(--percent) / 2 - 9px));
 
   --size-1: calc(var(--height) / 40 + var(--width) / 71.1111);
   --size-2: calc(var(--height) / 50 + var(--width) / 88.8888);
