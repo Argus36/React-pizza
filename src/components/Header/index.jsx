@@ -1,5 +1,5 @@
 import styles from "./Header.module.scss";
-import logo from "../../assets/Images/Header/logo.png";
+import logo from "../../assets/Header/logo.png";
 import { Link } from "react-router";
 
 export function Header() {
@@ -12,7 +12,7 @@ export function Header() {
             <h1>React pizza</h1>
           </div>
         </Link>
-        <Link to={"/Cart"} style={{ textDecoration: "none" }}>
+        <Link to={"/Basket"} style={{ textDecoration: "none" }}>
           <button className={styles.cart}>
             <div style={{ borderRight: "solid 1px rgba(255, 255, 255, 0.5)" }}>
               {" "}

@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router";
 
 import Home from "./pages/Home";
-import Cart from "./pages/Cart";
+import Basket from "./pages/Basket";
+import Agree from "./pages/Agree";
 import NotFound from "./pages/NotFound";
 
 import { Footer } from "./components/Footer";
@@ -15,7 +16,7 @@ function App() {
         <main>
           <Routes>
             <Route path="" element={<Home />} />
-            <Route path="/Cart" element={<Cart />} />
+            <Route path="/Basket" element={<Basket />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

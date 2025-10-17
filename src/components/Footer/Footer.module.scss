@@ -2,7 +2,8 @@
 
 footer {
   width: 100%;
-  height: 125px;
+  height: 100%;
+  padding: 1% 0;
   background: rgb(14, 14, 14);
 
   .foot_container {
@@ -24,6 +25,14 @@ footer {
 
     .six {
       height: calc((100vh / 35) + (var(--width) / 70));
+    }
+  }
+}
+
+@media (min-width: 1281px) {
+  footer {
+    .foot_container {
+      max-width: calc(var(--size-1) * 40.5);
     }
   }
 }

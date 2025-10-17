@@ -1,5 +1,5 @@
 import styles from "./Footer.module.scss";
-import { GitHub, Gmail, Telegram, YouTube } from "../../assets/Images/Footer";
+import { GitHub, Gmail, Telegram, YouTube } from "../../assets/Footer";
 
 export function Footer() {
   return (
