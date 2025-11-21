@@ -1,8 +1,7 @@
 import styles from "./Filtration.module.scss";
 import { useState } from "react";
 
-export function Filtration() {
-  const [activeIndex, setActiveIndex] = useState(0);
+export function Filtration({ categoryId, onClickCategory, sort, onClickSort }) {
   const categories = [
     "Все",
     "Мясные",
@@ -13,19 +12,24 @@ export function Filtration() {
   ];
 
   const [open, setOpen] = useState(false);
-  const [sort, setSort] = useState(0);
-  const listSort = ["Популярности", "Цене", "Алфавиту"];
-  const sortName = listSort[sort];
+  const listSort = [
+    { name: "Популярности 🡇", sortProperty: "rating" },
+    { name: "Популярности 🡅", sortProperty: "-rating" },
+    { name: "Цене 🡇", sortProperty: "price" },
+    { name: "Цене 🡅", sortProperty: "-price" },
+    { name: "Алфавиту 🡇", sortProperty: "title" },
+    { name: "Алфавиту 🡅", sortProperty: "-title" },
+  ];
 
   return (
     <div className={styles.content_top}>
       <div className={styles.categories}>
-        {categories.map((value, index) => (
+        {categories.map((categoryName, index) => (
           <button
             key={index}
-            onClick={() => setActiveIndex(index)}
-            className={activeIndex === index ? `${styles.active}` : ""}>
-            {value}
+            onClick={() => onClickCategory(index)}
+            className={categoryId === index ? `${styles.active}` : ""}>
+            {categoryName}
           </button>
         ))}
       </div>
@@ -35,20 +39,22 @@ export function Filtration() {
             onClick={() => {
               setOpen(!open);
             }}>
-            Сортировка по <b>{sortName}</b>
+            Сортировка по <b>{sort.name}</b>
           </p>
         </div>
         {open && (
           <div className={styles.sort__popup}>
-            {listSort.map((name, i) => (
+            {listSort.map((obj, i) => (
               <button
                 key={i}
                 onClick={() => {
                   setOpen(!open);
-                  setSort(i);
+                  onClickSort(obj);
                 }}
-                className={sort === i ? styles.active : ""}>
-                {name}
+                className={
+                  sort.sortProperty === obj.sortProperty ? styles.active : ""
+                }>
+                {obj.name}
               </button>
             ))}
           </div>

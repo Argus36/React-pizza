@@ -83,6 +83,7 @@
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+      min-height: calc(var(--size-1) * 1.5);
       max-height: calc(var(--size-1) * 1.5);
       width: calc(var(--size-1) * 4);
       border: 1px solid orange;
@@ -90,7 +91,7 @@
       color: orange;
       background: var(--color-clear);
       z-index: 9;
-      padding: 4%;
+      padding: calc(var(--size-2) / 2);
       line-height: 25px;
       text-align: center;
       font-weight: 600;
@@ -125,7 +126,8 @@
       }
 
       &:hover {
-        background: orange;
+        background: lighten(rgb(255, 150, 0), 5);
+        transition: all 0.15s ease-in-out;
         color: white;
         transition: background 0.15s ease-in-out;
 
@@ -138,6 +140,12 @@
         .plus {
           color: white;
         }
+      }
+
+      &:active {
+        background: darken(rgb(255, 150, 0), 5);
+        transform: scale(0.975);
+        border: none;
       }
     }
   }
