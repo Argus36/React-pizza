@@ -1,3 +1,5 @@
+@import "../../root.scss";
+
 .content_top {
   display: flex;
   justify-content: space-between;
@@ -12,7 +14,7 @@
 
     button {
       display: inline-block;
-      background: rgb(6, 6, 6);
+      background: var(--color-black);
       padding: calc(var(--size-4) - 0.5%) var(--size-2);
       border-radius: 50px;
       border: none;
@@ -44,21 +46,21 @@
     text-align: start;
     font-size: var(--size-4);
     border-radius: 60px 0 0 60px;
-    background: rgb(34, 34, 34);
+    background: var(--color-bg);
     z-index: 9999;
+
+    b {
+      color: orange;
+    }
 
     &__label {
       white-space: nowrap;
       cursor: pointer;
-
-      b {
-        color: orange;
-      }
     }
 
     &__popup {
       position: absolute;
-      background: rgb(48, 48, 48);
+      background: var(--color-light);
       right: 0;
       margin-top: 1.5%;
       border-radius: 10px;

@@ -1,11 +1,10 @@
 import styles from "./Products.module.scss";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 export function Products({ title, price, imageUrl, sizes, types }) {
   const [num, useNum] = useState(0);
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
-  const width = useRef(window.innerWidth);
 
   const Plus = () => {
     useNum(num + 1);
@@ -53,8 +52,7 @@ export function Products({ title, price, imageUrl, sizes, types }) {
         </div>
         <div className={styles.bottom_card}>
           <h2>
-            от {width.current < 1024 && <br />}
-            {price} ₽
+            от <span>{price} ₽</span>
           </h2>
           {num === 0 ? (
             <button style={{ cursor: "pointer" }} onClick={Plus}>

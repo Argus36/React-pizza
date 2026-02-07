@@ -1,0 +1,41 @@
+@import "../../root.scss";
+
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  li {
+    margin: var(--size-3);
+    list-style: none;
+    font-size: var(--size-3);
+    font-weight: 900;
+    border-radius: 50%;
+    border: 1px solid var(--color-orange);
+    cursor: pointer;
+
+    a {
+      display: block;
+      padding: calc(var(--size-4)) calc(var(--size-2) * 0.9);
+      border-radius: 50%;
+    }
+
+    &:hover {
+      background: lighten(rgb(255, 150, 0), 5);
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:active {
+      background: darken(rgb(255, 150, 0), 5);
+      transform: scale(0.975);
+    }
+  }
+
+  :global {
+    .selected {
+      background: var(--color-orange);
+      transform: translateY(1.5%);
+      transition: transform 0.15s ease-in-out;
+    }
+  }
+}

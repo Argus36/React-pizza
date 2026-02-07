@@ -10,6 +10,7 @@
   --color-clear: rgba(255, 255, 255, 0);
 
   --color-orange: rgb(255, 150, 0);
+  --color: white;
 
   --grid: repeat(2, calc(var(--percent) / 2 - 9px));
 
@@ -34,5 +35,17 @@
     --size-2: calc(var(--height) / 70 + var(--width) / 124.4444);
     --size-3: calc(var(--height) / 95 + var(--width) / 168.8888);
     --size-4: calc(var(--height) / 105 + var(--width) / 186.6666);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: rgb(221, 221, 221);
+    --color-black: rgb(241, 241, 241);
+    --color-light: rgb(207, 207, 207);
+    --color-light-active: rgba(64, 64, 64, 0.25);
+
+    --color-orange: rgb(255, 150, 0);
+    --color: black;
   }
 }

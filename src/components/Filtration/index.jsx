@@ -2,14 +2,7 @@ import styles from "./Filtration.module.scss";
 import { useState } from "react";
 
 export function Filtration({ categoryId, onClickCategory, sort, onClickSort }) {
-  const categories = [
-    "Все",
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
-    "Острые",
-    "Закрытые",
-  ];
+  const categories = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые"];
 
   const [open, setOpen] = useState(false);
   const listSort = [

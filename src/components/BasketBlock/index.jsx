@@ -2,8 +2,6 @@ import styles from "./CartBlock.module.scss";
 import checkbox from "../../assets/Basket/Agree checkbox.png";
 import close from "../../assets/Basket/Close.svg";
 
-import { useEffect, useRef, useState } from "react";
-
 export function BasketBlock() {
   return (
     <div className={styles.container}>
