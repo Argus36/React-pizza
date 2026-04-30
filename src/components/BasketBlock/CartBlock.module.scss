@@ -24,95 +24,6 @@
     .basket {
       display: flex;
       flex-direction: column;
-
-      .item {
-        display: flex;
-        flex-direction: column;
-        padding: var(--size-3) var(--size-4);
-        border: 1px solid var(--color-light-active);
-        border-style: solid none;
-
-        .top,
-        .bottom {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin: calc(var(--size-4) / 2) 0;
-
-          .left {
-            display: flex;
-
-            img {
-              height: calc(var(--size-1) * 4);
-              width: auto;
-            }
-
-            .flex {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              padding-left: var(--size-4);
-
-              .name {
-                font-size: var(--size-2);
-                margin: 0 0 var(--size-4) 0;
-              }
-
-              .dough,
-              .size {
-                font-size: var(--size-3);
-              }
-            }
-          }
-
-          .price {
-            font-size: var(--size-3);
-            font-weight: 800;
-          }
-
-          .right {
-            img {
-              cursor: pointer;
-              height: auto;
-              width: var(--size-2);
-            }
-          }
-
-          .amount {
-            background: var(--color-light);
-            border: 1px solid var(--color-orange);
-            border-radius: 30px;
-            padding: calc(var(--size-2) / 6) calc(var(--size-2) / 3);
-
-            .minus,
-            .plus {
-              font-size: var(--size-2);
-              font-weight: 900;
-              margin: 0 var(--size-4);
-              cursor: pointer;
-              height: min-content;
-            }
-
-            .num {
-              font-size: var(--size-4);
-              font-weight: 600;
-            }
-          }
-        }
-
-        .bottom {
-          padding-left: calc(var(--size-1) * 1.25);
-        }
-      }
-
-      .item:last-child {
-        border-style: solid none none none;
-      }
-
-      .item:first-child {
-        border: 1px solid var(--color-light-active);
-        border-style: none none solid none;
-      }
     }
   }
 
@@ -161,9 +72,11 @@
 
     .agree {
       margin: 7.5% 0 0 0;
+      justify-content: left;
 
       img {
         width: var(--size-3);
+        margin-right: var(--size-4);
       }
 
       p {

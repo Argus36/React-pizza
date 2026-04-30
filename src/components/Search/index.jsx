@@ -1,12 +1,30 @@
-import { useState } from "react";
+import { useRef, useState, useMemo } from "react";
 import style from "./Search.module.scss";
+import debounce from "lodash.debounce";
+import { useDispatch } from "react-redux";
 
-export function Search({ searchValue, setSearchValue }) {
+import { setSearch } from "../../redux/slices/filterSlice";
+
+export function Search() {
+  const dispatch = useDispatch();
+
   const [focused, setFocused] = useState(false);
+  const [localSearch, setLocalSearch] = useState("");
+
+  const inputRef = useRef();
+
+  const call = useMemo(
+    () =>
+      debounce((val) => {
+        dispatch(setSearch(val));
+      }, 400),
+    [dispatch],
+  );
 
   return (
     <div className={style.Search}>
       <svg
+        onClick={() => inputRef.current.focus()}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
         viewBox="0 -960 960 960"
@@ -17,6 +35,7 @@ export function Search({ searchValue, setSearchValue }) {
       <input
         type="text"
         placeholder="Поиск"
+        ref={inputRef}
         onFocus={() => {
           setFocused(true);
         }}
@@ -24,13 +43,18 @@ export function Search({ searchValue, setSearchValue }) {
           setFocused(false);
         }}
         onChange={(val) => {
-          setSearchValue(val.target.value);
+          setLocalSearch(val.target.value);
+          call(val.target.value);
         }}
-        value={searchValue}
+        value={localSearch}
       />
-      {searchValue && (
+      {localSearch && (
         <svg
-          onClick={() => setSearchValue("")}
+          onClick={() => {
+            setLocalSearch("");
+            call("");
+            inputRef.current.focus();
+          }}
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
           viewBox="0 -960 960 960"

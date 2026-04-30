@@ -1,64 +1,101 @@
 import { Products } from "../components/Products";
 import { Skeleton } from "../components/Products/Skeleton";
-import { Filtration } from "../components/Filtration";
+import { Filtration, listSort } from "../components/Filtration";
 import { Pagination } from "../components/Pagination";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import qs from "qs";
+import { useNavigate } from "react-router";
 
-export default function Home({ searchValue }) {
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [categoryId, setCategoryId] = useState(0);
-  const [page, setPage] = useState(1);
-  const [pageId, setPageId] = useState(1);
-  const [sort, setSort] = useState({
-    name: "Популярности 🡇",
-    sortProperty: "rating",
-  });
+import { setPage, setQuery } from "../redux/slices/filterSlice";
+import { fetchPizzas } from "../redux/slices/pizzaSlice";
 
-  useEffect(() => {
-    setIsLoading(true);
+export default function Home() {
+  const navigate = useNavigate();
 
-    const sortBy = sort.sortProperty.replace("-", "");
-    const order = sort.sortProperty.includes("-") ? "asc" : "desc";
+  const { items, status, pageId } = useSelector((state) => state.pizza);
+
+  const { categoryId, currentPage, sort, searchValue } = useSelector(
+    (state) => state.filter,
+  );
+
+  const dispatch = useDispatch();
+
+  const sortType = sort.sortProperty;
+
+  const isRender = useRef(false);
+
+  const getPizzas = useCallback(() => {
+    const sortBy = sortType.replace("-", "");
+    const order = sortType.includes("-") ? "asc" : "desc";
     const category = categoryId > 0 ? `&category=${categoryId}` : "";
     const search = searchValue ? `&search=${searchValue}` : "";
 
-    try {
-      fetch(
-        `https://68be220c227c48698f86132b.mockapi.io/items?page=${page}${category}&sortBy=${sortBy}&order=${order}${search}`,
-      )
-        .then((response) => response.json())
-        .then((result) => {
-          setItems(result);
-          setPageId(Math.ceil(result.length / 12));
-          setIsLoading(false);
-        });
-    } catch (error) {
-      console.error(error.message);
-      setItems([]);
-    }
-  }, [categoryId, sort, searchValue, page]);
+    dispatch(fetchPizzas({ currentPage, category, sortBy, order, search }));
 
-  const itemSlice = items.slice(12 * (page - 1), 12 * page);
+    if (pageId < currentPage) {
+      console.log(`action 2:  ${pageId}`);
+      dispatch(setPage(pageId));
+    }
+    console.log(`action 2.1:  ${pageId}`);
+  }, [currentPage, categoryId, dispatch, pageId, searchValue, sortType]);
+
+  useEffect(() => {
+    console.log(`action 3`);
+    const query = qs.stringify({
+      sortType,
+      categoryId,
+      currentPage,
+    });
+
+    navigate(`?${query}`);
+
+    isRender.current = true;
+  }, [categoryId, sortType, searchValue, currentPage, navigate]);
+
+  useEffect(() => {
+    console.log(`action 1`);
+    if (window.location.search) {
+      console.log(`action 1.1`);
+      const params = qs.parse(window.location.search.substring(1));
+
+      const sort = listSort.find((obj) => obj.sortProperty === params.sortType);
+
+      dispatch(setQuery({ ...params, sort }));
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    getPizzas();
+  }, [categoryId, sortType, searchValue, currentPage, pageId, getPizzas]);
+
+  const itemSlice = items.slice(12 * (currentPage - 1), 12 * currentPage);
 
   const pizzes =
     Array.isArray(items) &&
     itemSlice.map((value) => <Products key={value.id} {...value} />);
-  const skeleton = [...new Array(34)].map((_, i) => <Skeleton key={i} />);
+  const skeleton = [...new Array(12)].map((_, i) => <Skeleton key={i} />);
 
   return (
     <div className="main_container">
-      <Filtration
-        categoryId={categoryId}
-        onClickCategory={(i) => setCategoryId(i)}
-        sort={sort}
-        onClickSort={(i) => {
-          setSort(i);
-        }}
-      />
-      <div className="main_content">{isLoading ? skeleton : pizzes}</div>
-      <Pagination items={pageId} onChangePage={(number) => setPage(number)} />
+      <Filtration />
+
+      {status === "error" ? (
+        <div className="error">
+          <p>Ой, какая-то техническая ошибка</p>
+          <p>😿</p>
+        </div>
+      ) : (
+        <>
+          <div className="main_content">
+            {status === "loading" ? skeleton : pizzes}
+          </div>
+          <Pagination items={pageId} />
+        </>
+      )}
     </div>
   );
 }

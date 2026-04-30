@@ -1,82 +1,23 @@
 import styles from "./CartBlock.module.scss";
 import checkbox from "../../assets/Basket/Agree checkbox.png";
-import close from "../../assets/Basket/Close.svg";
+
+import { BasketProduct } from "../BasketProduct";
+import { useDispatch, useSelector } from "react-redux";
 
 export function BasketBlock() {
+  const dispatch = useDispatch();
+
+  const items = useSelector((state) => state.cart.items);
+  console.log(items);
+
   return (
     <div className={styles.container}>
       <div className={styles.left_container}>
         <h2>Корзина</h2>
         <div className={styles.basket}>
-          <div className={styles.item}>
-            <div className={styles.top}>
-              <div className={styles.left}>
-                <img src="/React-pizza/Img/Терияки.avif" alt="item" />
-                <div className={styles.flex}>
-                  <h2 className={styles.name}>Терияки</h2>
-                  <p className={styles.dough}>традиционное тесто</p>
-                  <p className={styles.size}>30 см.</p>
-                </div>
-              </div>
-              <div className={styles.right}>
-                <img src={close} alt="close" />
-              </div>
-            </div>
-            <div className={styles.bottom}>
-              <h3 className={styles.price}>{379} ₽</h3>
-              <div className={styles.amount}>
-                <span className={styles.minus}>-</span>
-                <span className={styles.num}>1</span>
-                <span className={styles.plus}>+</span>
-              </div>
-            </div>
-          </div>
-          <div className={styles.item}>
-            <div className={styles.top}>
-              <div className={styles.left}>
-                <img src="/React-pizza/Img/Терияки.avif" alt="item" />
-                <div className={styles.flex}>
-                  <h2 className={styles.name}>Терияки</h2>
-                  <p className={styles.dough}>традиционное тесто</p>
-                  <p className={styles.size}>30 см.</p>
-                </div>
-              </div>
-              <div className={styles.right}>
-                <img src={close} alt="close" />
-              </div>
-            </div>
-            <div className={styles.bottom}>
-              <h3 className={styles.price}>{379} ₽</h3>
-              <div className={styles.amount}>
-                <span className={styles.minus}>-</span>
-                <span className={styles.num}>1</span>
-                <span className={styles.plus}>+</span>
-              </div>
-            </div>
-          </div>
-          <div className={styles.item}>
-            <div className={styles.top}>
-              <div className={styles.left}>
-                <img src="/React-pizza/Img/Терияки.avif" alt="item" />
-                <div className={styles.flex}>
-                  <h2 className={styles.name}>Терияки</h2>
-                  <p className={styles.dough}>традиционное тесто</p>
-                  <p className={styles.size}>30 см.</p>
-                </div>
-              </div>
-              <div className={styles.right}>
-                <img src={close} alt="close" />
-              </div>
-            </div>
-            <div className={styles.bottom}>
-              <h3 className={styles.price}>{379} ₽</h3>
-              <div className={styles.amount}>
-                <span className={styles.minus}>-</span>
-                <span className={styles.num}>1</span>
-                <span className={styles.plus}>+</span>
-              </div>
-            </div>
-          </div>
+          {items.map((item, index) => (
+            <BasketProduct key={index} {...item} />
+          ))}
         </div>
       </div>
       <div className={styles.right_container}>

@@ -1,0 +1,86 @@
+@import "../../root.scss";
+
+.bottom_card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2 {
+    font-weight: bold;
+    font-size: calc(var(--size-2) - 10%);
+    line-height: calc(var(--height) / 35);
+    letter-spacing: 0.015em;
+
+    span {
+      white-space: nowrap;
+    }
+  }
+
+  button {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: calc(var(--size-1) * 1.5);
+    max-height: calc(var(--size-1) * 1.5);
+    width: calc(var(--size-1) * 4);
+    border: 1px solid orange;
+    border-radius: 30px;
+    color: orange;
+    background: var(--color-clear);
+    z-index: 9;
+    padding: calc(var(--size-2) / 2);
+    line-height: 25px;
+    text-align: center;
+    font-weight: 600;
+    font-size: var(--size-3);
+    transition: all 0.1s ease-in-out;
+
+    .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--size-1);
+      height: var(--size-1);
+      font-weight: 600;
+      border-radius: 50%;
+      margin: 0 10%;
+      font-size: var(--size-3);
+    }
+
+    .minus,
+    .plus {
+      color: orange;
+      font-size: var(--size-2);
+      font-weight: 900;
+      z-index: 9999;
+      cursor: pointer;
+      transform: translateY(-5%);
+    }
+
+    .minus {
+      transform: translateY(-10%);
+    }
+
+    &:hover {
+      background: lighten(rgb(255, 150, 0), 5);
+      transition: all 0.15s ease-in-out;
+      color: white;
+      transition: background 0.15s ease-in-out;
+
+      .num {
+        color: white;
+      }
+
+      .minus,
+      .plus {
+        color: white;
+      }
+    }
+
+    &:active {
+      background: darken(rgb(255, 150, 0), 5);
+      transform: scale(0.975);
+      border: none;
+    }
+  }
+}

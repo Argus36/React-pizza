@@ -2,11 +2,16 @@ import { Search } from "../Search";
 
 import styles from "./Header.module.scss";
 import logo from "../../assets/Header/logo.png";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { useRef } from "react";
+import { useSelector } from "react-redux";
 
-export function Header({ searchValue, setSearchValue }) {
+export function Header() {
   const widths = useRef(window.innerWidth);
+
+  const location = useLocation();
+
+  const { allPrice, amount } = useSelector((state) => state.cart);
 
   return (
     <header>
@@ -17,18 +22,16 @@ export function Header({ searchValue, setSearchValue }) {
             <h1>React pizza</h1>
           </div>
         </Link>
-        {widths.current >= 1280 ? (
-          <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-        ) : (
-          ``
+        {location.pathname === "/React-pizza" && widths.current >= 1280 && (
+          <Search />
         )}
         <Link to={"/React-pizza/Basket"} style={{ textDecoration: "none" }}>
           <button className={styles.cart}>
             <div style={{ borderRight: "solid 1px rgba(255, 255, 255, 0.5)" }}>
               {" "}
-              <span>523 ₽</span>
+              <span>{allPrice} ₽</span>
             </div>
-            <div>🛒</div>
+            <div>🛒 {amount}</div>
           </button>
         </Link>
       </div>

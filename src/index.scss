@@ -26,23 +26,68 @@ code {
 .wrapper {
   display: flex;
   flex-direction: column;
+
   min-height: var(--height);
 
   main {
     flex: 1;
+    min-height: 0;
+    height: 100%;
     padding-top: var(--size-2);
 
     .main_container {
-      max-width: 1504px;
       margin: 0 auto;
-      height: 100%;
       padding: 0 2%;
+      height: 100%;
 
       .main_content {
         display: grid;
         grid-template-columns: var(--grid);
         gap: 100px 18px;
         padding: calc(var(--height) / 20 + 2vw) 0;
+      }
+
+      .error {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(90%);
+        font-size: var(--size-1);
+        text-align: center;
+        font-weight: 600;
+
+        p:nth-child(2) {
+          font-size: calc(var(--size-1) * 2);
+        }
+      }
+
+      .full_pizza_content {
+        height: calc(var(--height) - (var(--height) / 5));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: calc(var(--size-1) * 12.5);
+        }
+
+        .right {
+          margin-top: 4%;
+          padding: 0 3.5%;
+          letter-spacing: 5%;
+
+          h1 {
+            font-size: var(--size-1);
+            font-weight: 800;
+            margin-bottom: 4%;
+          }
+
+          p {
+            font-size: calc(var(--size-2) - (var(--size-3) / 3));
+          }
+        }
       }
     }
   }
@@ -56,6 +101,29 @@ code {
           gap: 140px 69px;
           grid-template-columns: var(--grid);
         }
+
+        .full_pizza_content {
+          flex-direction: row;
+
+          img {
+            width: calc(var(--size-1) * 12.5);
+          }
+
+          .right {
+            width: calc(var(--size-1) * 17.5);
+            margin-left: 4%;
+            letter-spacing: 4%;
+
+            h1 {
+              font-size: var(--size-1);
+              margin-bottom: 4%;
+            }
+
+            p {
+              font-size: var(--size-3);
+            }
+          }
+        }
       }
     }
   }
@@ -65,8 +133,8 @@ code {
   .wrapper {
     main {
       .main_container {
-        height: 100% !important;
         max-width: calc(var(--size-1) * 40.5);
+
         .main_content {
           grid-template-columns: var(--grid);
         }
