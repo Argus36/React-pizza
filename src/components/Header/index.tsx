@@ -3,15 +3,15 @@ import { Search } from "../Search";
 import styles from "./Header.module.scss";
 import logo from "../../assets/Header/logo.png";
 import { Link, useLocation } from "react-router";
-import { useRef } from "react";
-import { useSelector } from "react-redux";
+import { FC, useRef } from "react";
+import { useAppSelector } from "../../redux/hook";
 
-export function Header() {
+export const Header: FC = () => {
   const widths = useRef(window.innerWidth);
 
   const location = useLocation();
 
-  const { allPrice, amount } = useSelector((state) => state.cart);
+  const { allPrice, amount } = useAppSelector((state) => state.cart);
 
   return (
     <header>
@@ -37,4 +37,4 @@ export function Header() {
       </div>
     </header>
   );
-}
+};

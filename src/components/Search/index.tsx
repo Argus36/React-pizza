@@ -5,17 +5,17 @@ import { useDispatch } from "react-redux";
 
 import { setSearch } from "../../redux/slices/filterSlice";
 
-export function Search() {
+export const Search = () => {
   const dispatch = useDispatch();
 
   const [focused, setFocused] = useState(false);
   const [localSearch, setLocalSearch] = useState("");
 
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const call = useMemo(
     () =>
-      debounce((val) => {
+      debounce((val: string) => {
         dispatch(setSearch(val));
       }, 400),
     [dispatch],
@@ -24,7 +24,7 @@ export function Search() {
   return (
     <div className={style.Search}>
       <svg
-        onClick={() => inputRef.current.focus()}
+        onClick={() => inputRef.current?.focus()}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
         viewBox="0 -960 960 960"
@@ -53,7 +53,7 @@ export function Search() {
           onClick={() => {
             setLocalSearch("");
             call("");
-            inputRef.current.focus();
+            inputRef.current?.focus();
           }}
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
@@ -65,4 +65,4 @@ export function Search() {
       )}
     </div>
   );
-}
+};

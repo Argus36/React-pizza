@@ -1,11 +1,23 @@
 import styles from "./BasketProduct.module.scss";
 import close from "../../assets/Basket/Close.svg";
 
-import { useDispatch } from "react-redux";
+import { FC } from "react";
+
+import { useAppDispatch } from "../../redux/hook";
 
 import { addItem, removeItem, clearLine } from "../../redux/slices/cartSlice";
 
-export function BasketProduct({
+type BasketProductProps = {
+  count: number;
+  id: string;
+  title: string;
+  price: number;
+  imageUrl: string;
+  sizes: number;
+  type: string;
+};
+
+export const BasketProduct: FC<BasketProductProps> = ({
   count,
   id,
   title,
@@ -13,10 +25,11 @@ export function BasketProduct({
   imageUrl,
   sizes,
   type,
-}) {
-  const dispatch = useDispatch();
+}) => {
+  const dispatch = useAppDispatch();
 
   const item = {
+    count,
     id,
     title,
     price,
@@ -66,4 +79,4 @@ export function BasketProduct({
       </div>
     </div>
   );
-}
+};

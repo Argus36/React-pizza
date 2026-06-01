@@ -16,9 +16,22 @@
     border-radius: 20px;
     padding: var(--size-3) 0;
 
-    h2 {
-      font-size: var(--size-1);
-      margin: var(--size-2) var(--size-1);
+    .flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h2 {
+        font-size: var(--size-1);
+        margin: var(--size-2) var(--size-1);
+      }
+
+      img {
+        width: var(--size-2);
+        height: min-content;
+        cursor: pointer;
+        margin-right: var(--size-4);
+      }
     }
 
     .basket {

@@ -1,7 +1,8 @@
 import styles from "./Footer.module.scss";
 import { GitHub, Gmail, Telegram, YouTube } from "../../assets/Footer";
+import { FC } from "react";
 
-export function Footer() {
+export const Footer: FC = () => {
   return (
     <footer>
       <div className={styles.foot_container}>
@@ -36,4 +37,4 @@ export function Footer() {
       </div>
     </footer>
   );
-}
+};

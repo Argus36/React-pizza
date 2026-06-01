@@ -1,19 +1,40 @@
 import styles from "./CartBlock.module.scss";
 import checkbox from "../../assets/Basket/Agree checkbox.png";
+import close from "../../assets/Basket/Close.svg";
 
 import { BasketProduct } from "../BasketProduct";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppSelector, useAppDispatch } from "../../redux/hook";
+
+import { clearItems } from "../../redux/slices/cartSlice";
 
 export function BasketBlock() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const items = useSelector((state) => state.cart.items);
-  console.log(items);
+  const items: {
+    count: number;
+    id: string;
+    title: string;
+    price: number;
+    imageUrl: string;
+    sizes: number;
+    type: string;
+  }[] = useAppSelector((state) => state.cart.items);
 
   return (
     <div className={styles.container}>
       <div className={styles.left_container}>
-        <h2>Корзина</h2>
+        <div className={styles.flex}>
+          <h2>Корзина</h2>
+          {items.length ? (
+            <img
+              onClick={() => dispatch(clearItems())}
+              src={close}
+              alt="close"
+            />
+          ) : (
+            <></>
+          )}
+        </div>
         <div className={styles.basket}>
           {items.map((item, index) => (
             <BasketProduct key={index} {...item} />

@@ -1,10 +1,27 @@
 import styles from "./Products.module.scss";
-import { useState } from "react";
+import { FC, useState } from "react";
 
 import { Button } from "../Button";
 import { Link } from "react-router";
 
-export function Products({ id, title, price, imageUrl, sizes, types }) {
+type ProductProps = {
+  count: number;
+  id: string;
+  title: string;
+  price: number;
+  imageUrl: string;
+  sizes: number[];
+  types: number[];
+};
+
+export const Products: FC<ProductProps> = ({
+  id,
+  title,
+  price,
+  imageUrl,
+  sizes,
+  types,
+}) => {
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
@@ -64,4 +81,4 @@ export function Products({ id, title, price, imageUrl, sizes, types }) {
       </Link>
     </div>
   );
-}
+};

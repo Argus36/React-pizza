@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router";
 
 import Home from "./pages/Home";
-import Basket from "./pages/Basket";
-import FullPizza from "./pages/FullPizza";
-import NotFound from "./pages/NotFound";
+import { Basket } from "./pages/Basket";
+import { FullPizza } from "./pages/FullPizza";
+import { NotFound } from "./pages/NotFound";
 
-import { Footer } from "./components/Footer";
-import { Header } from "./components/Header";
+import { Footer } from "./components/Footer/index";
+import { Header } from "./components/Header/index";
 
 function App() {
   return (

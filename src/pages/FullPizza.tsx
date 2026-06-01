@@ -1,11 +1,17 @@
 import axios from "axios";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
+import { FC } from "react";
 
-export default function FullPizza() {
+export const FullPizza: FC = () => {
   const params = useParams();
 
-  const [pizza, setPizza] = useState();
+  const [pizza, setPizza] = useState<{
+    imageUrl: string;
+    title: string;
+    description: string;
+    price: number;
+  }>();
 
   useEffect(() => {
     async function paramsAxios() {
@@ -21,7 +27,13 @@ export default function FullPizza() {
   }, [params.id]);
 
   if (!pizza) {
-    return <div>Загрузка</div>;
+    return (
+      <div className="main_container">
+        <div className="full_pizza_content">
+          <h1>Загрузка...</h1>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -30,9 +42,10 @@ export default function FullPizza() {
         <img src={pizza.imageUrl} alt="Пицца" />
         <div className="right">
           <h1>{pizza.title}</h1>
-          <p>{pizza.description}</p>
+          <h2>{pizza.description}</h2>
+          <p>от {pizza.price} ₽</p>
         </div>
       </div>
     </div>
   );
-}
+};

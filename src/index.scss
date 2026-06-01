@@ -81,11 +81,19 @@ code {
           h1 {
             font-size: var(--size-1);
             font-weight: 800;
-            margin-bottom: 4%;
+
+            text-align: center;
+          }
+
+          h2 {
+            margin: 4% 0;
+            font-weight: 500;
+            font-size: calc(var(--size-2) - (var(--size-3) / 3));
           }
 
           p {
-            font-size: calc(var(--size-2) - (var(--size-3) / 3));
+            text-align: end;
+            font-size: 25px;
           }
         }
       }
@@ -111,16 +119,25 @@ code {
 
           .right {
             width: calc(var(--size-1) * 17.5);
-            margin-left: 4%;
+            margin: 0 0 0 4%;
             letter-spacing: 4%;
 
             h1 {
               font-size: var(--size-1);
               margin-bottom: 4%;
+              text-align: start;
+            }
+
+            h2 {
+              margin: 4% 0;
+              font-weight: 500;
+              font-size: var(--size-3);
             }
 
             p {
-              font-size: var(--size-3);
+              text-align: end;
+              font-size: var(--size-2);
+              font-weight: 600;
             }
           }
         }

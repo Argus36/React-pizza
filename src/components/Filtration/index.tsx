@@ -1,10 +1,15 @@
 import styles from "./Filtration.module.scss";
-import { useRef, useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { FC, useRef, useState, useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../../redux/hook";
 
 import { setSort, setCategoryId } from "../../redux/slices/filterSlice";
 
-export const listSort = [
+type ListItem = {
+  name: string;
+  sortProperty: string;
+};
+
+export const listSort: ListItem[] = [
   { name: "Популярности 🡇", sortProperty: "rating" },
   { name: "Популярности 🡅", sortProperty: "-rating" },
   { name: "Цене 🡇", sortProperty: "price" },
@@ -13,28 +18,28 @@ export const listSort = [
   { name: "Алфавиту 🡅", sortProperty: "-title" },
 ];
 
-export function Filtration() {
+export const Filtration: FC = () => {
   const categories = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые"];
 
-  const dispatch = useDispatch();
-  const sort = useSelector((state) => state.filter.sort);
-  const categoryId = useSelector((state) => state.filter.categoryId);
+  const dispatch = useAppDispatch();
+  const sort = useAppSelector((state) => state.filter.sort);
+  const categoryId = useAppSelector((state) => state.filter.categoryId);
 
-  const sortRef = useRef();
+  const sortRef = useRef<HTMLDivElement>(null);
 
   const [open, setOpen] = useState(false);
 
-  const onClickSort = (id) => {
-    dispatch(setSort(id));
+  const onClickSort = (obj: ListItem) => {
+    dispatch(setSort(obj));
   };
 
-  const onClickCategory = (id) => {
+  const onClickCategory = (id: number) => {
     dispatch(setCategoryId(id));
   };
 
   useEffect(() => {
-    const click = (event) => {
-      if (!event.composedPath().includes(sortRef.current)) {
+    const click = (event: MouseEvent) => {
+      if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
         setOpen(false);
       }
     };
@@ -87,4 +92,4 @@ export function Filtration() {
       </div>
     </div>
   );
-}
+};

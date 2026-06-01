@@ -1,9 +1,10 @@
 import { BasketBlock } from "../components/BasketBlock";
+import { FC } from "react";
 
-export default function Basket() {
+export const Basket: FC = () => {
   return (
     <div className="main_container">
       <BasketBlock />
     </div>
   );
-}
+};

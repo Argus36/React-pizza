@@ -1,10 +1,10 @@
-import { Products } from "../components/Products";
+import { Products } from "../components/Products/index";
 import { Skeleton } from "../components/Products/Skeleton";
-import { Filtration, listSort } from "../components/Filtration";
-import { Pagination } from "../components/Pagination";
+import { Filtration, listSort } from "../components/Filtration/index";
+import { Pagination } from "../components/Pagination/index";
 
 import { useEffect, useRef, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
 import qs from "qs";
 import { useNavigate } from "react-router";
 
@@ -14,13 +14,13 @@ import { fetchPizzas } from "../redux/slices/pizzaSlice";
 export default function Home() {
   const navigate = useNavigate();
 
-  const { items, status, pageId } = useSelector((state) => state.pizza);
+  const { items, status, pageId } = useAppSelector((state) => state.pizza);
 
-  const { categoryId, currentPage, sort, searchValue } = useSelector(
+  const { categoryId, currentPage, sort, searchValue } = useAppSelector(
     (state) => state.filter,
   );
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const sortType = sort.sortProperty;
 
@@ -93,7 +93,7 @@ export default function Home() {
           <div className="main_content">
             {status === "loading" ? skeleton : pizzes}
           </div>
-          <Pagination items={pageId} />
+          <Pagination pag={pageId} />
         </>
       )}
     </div>
