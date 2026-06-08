@@ -20,6 +20,8 @@ export function BasketBlock() {
     type: string;
   }[] = useAppSelector((state) => state.cart.items);
 
+  const allPrice = useAppSelector((state) => state.cart.allPrice);
+
   return (
     <div className={styles.container}>
       <div className={styles.left_container}>
@@ -45,7 +47,7 @@ export function BasketBlock() {
         <h3>Товары, {} шт.</h3>
         <div className={styles.total}>
           <h3>Итого: </h3>
-          <h3>{0} ₽</h3>
+          <h3>{allPrice} ₽</h3>
         </div>
         <button>Заказать</button>
         <div className={styles.agree}>

@@ -16,10 +16,24 @@ interface CartSliceState {
   items: CartItem[];
 }
 
+const localAllPrice = JSON.parse(localStorage.getItem("allPrice") || "0");
+const localItems = JSON.parse(localStorage.getItem("items") || "[]");
+const localAmount = JSON.parse(localStorage.getItem("amount") || "0");
+
+const localStorageChange = (state: CartSliceState) => {
+  try {
+    localStorage.setItem("allPrice", JSON.stringify(state.allPrice));
+    localStorage.setItem("items", JSON.stringify(state.items));
+    localStorage.setItem("amount", JSON.stringify(state.amount));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const initialState: CartSliceState = {
-  allPrice: 0,
-  amount: 0,
-  items: [],
+  allPrice: localAllPrice,
+  amount: localAmount,
+  items: localItems,
 };
 
 const findItemsPizza = (
@@ -37,17 +51,15 @@ const findItemsPizza = (
   return findItems;
 };
 
-const allPriceCount = (
-  state: CartSliceState,
-  action: PayloadAction<CartItem>,
-) => {
-  state.allPrice = state.items.reduce((sum, obj) => {
-    return obj.price * obj.count + sum;
-  }, 0);
+const allPriceCount = (state: CartSliceState) => {
+  state.allPrice = state.items.reduce(
+    (sum, obj) => obj.price * obj.count + sum,
+    0,
+  );
 
-  state.amount = state.items.reduce((sum, obj) => {
-    return obj.count + sum;
-  }, 0);
+  state.amount = state.items.reduce((sum, obj) => obj.count + sum, 0);
+
+  localStorageChange(state);
 };
 
 const CartSlice = createSlice({
@@ -66,7 +78,7 @@ const CartSlice = createSlice({
         });
       }
 
-      allPriceCount(state, action);
+      allPriceCount(state);
     },
 
     removeItem(state, action: PayloadAction<CartItem>) {
@@ -85,7 +97,7 @@ const CartSlice = createSlice({
         }
       }
 
-      allPriceCount(state, action);
+      allPriceCount(state);
     },
     clearLine(state, action: PayloadAction<CartItem>) {
       const findItems = state.items.findIndex(
@@ -97,12 +109,14 @@ const CartSlice = createSlice({
 
       state.items.splice(findItems, 1);
 
-      allPriceCount(state, action);
+      allPriceCount(state);
     },
     clearItems(state) {
       state.items = [];
       state.allPrice = 0;
       state.amount = 0;
+
+      localStorageChange(state);
     },
   },
 });
